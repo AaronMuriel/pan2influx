@@ -54,6 +54,10 @@ request.get(options, function (error, response, body) {
         var values = _.map($('cpu-load-average').find('value'), function(item) {
             return $(item).text().split(',');
         });
-        console.log(values[0]); // coreid 0 last min 1 sec
+        console.log(getMaxOfArray(values[1])); // coreid 1 max 1 sec from last minute
     } else console.log(error)
 });
+
+function getMaxOfArray(numArray) {
+    return Math.max.apply(null, numArray);
+}
