@@ -42,13 +42,13 @@ request.get(options, function (error, response, body) {
          <resource-utilization><name>packet descriptor</name>
          <resource-utilization><name>sw tags descriptor</name>
          */
-        //GOOD
+        //GOOD - using xpath and xmldom
         //var doc = new dom().parseFromString(body);
         //var nodes = xpath.select("//value", doc);
         //console.log(nodes[0].localName + ": " + nodes[0].firstChild.data);
         //console.log("node: " + nodes[0].toString())
         //console.log(nodes[1].firstChild.data.split(',')[0]); // coreid 1 last min 1 sec
-        //BETTER
+        //BETTER using cheerio
         var $ = cheerio.load(body, { xmlMode: true });
         //cpu-load-average->value, cpu-load-maximum->value, resource-utilization->value
         var values = _.map($('cpu-load-average').find('value'), function(item) {
