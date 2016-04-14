@@ -1,0 +1,14 @@
+{
+  "name": "pan2influx",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node pan2influx.js"
+  },
+  "dependencies": {
+    "request":"*",
+    "influx":"*",
+    "cheerio":"*",
+    "lodash":"*"
+  }
+}
