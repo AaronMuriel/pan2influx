@@ -12,9 +12,15 @@ var request = require('request');
     , dom = require('xmldom').DOMParser;*/
 var cheerio = require('cheerio');
 var _ = require('lodash');
-const API = 'https://10.95.2.234/esp/restapi.esp?type=op&cmd=';
+var influx = require('./influx');
+const FW = 'PAN';
+//const IP = '10.95.2.234';
+const IP = process.env.IP;
+const API = 'https://' + IP + '/esp/restapi.esp?type=op&cmd=';
 const CMD = '<show><running><resource-monitor><second></second></resource-monitor></running></show>';
-const KEY = 'LUFRPT0wOFBSTWxOdGIvazFxRkc2b2VpZnNnTUEyc1E9QnRPY0ZGNWhMd3Rya3l6VndyZnVhUT09 =';
+//const KEY = 'LUFRPT0wOFBSTWxOdGIvazFxRkc2b2VpZnNnTUEyc1E9QnRPY0ZGNWhMd3Rya3l6VndyZnVhUT09 =';
+const KEY = process.env.KEY;
+console.log(IP, API, KEY);
 
 var URL = API + CMD + '&key=' + KEY;
 
@@ -29,7 +35,7 @@ var options = {
 
 request.get(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-        console.log(body);
+        //console.log(body);
         //var output = parser.toJson(body);
         //console.log(output);
         /*
@@ -54,7 +60,11 @@ request.get(options, function (error, response, body) {
         var values = _.map($('cpu-load-average').find('value'), function(item) {
             return $(item).text().split(',');
         });
-        console.log(getMaxOfArray(values[1])); // coreid 1 max 1 sec from last minute
+        var value = getMaxOfArray(values[1]);
+        console.log(value); // coreid 1 max 1 sec from last minute
+        influx.writePoint('cpu', {value: value}, {site: 'DC', firewall: FW}, function (err, response) {
+            if (err) console.log("Influxdb error");
+        })
     } else console.log(error)
 });
 
