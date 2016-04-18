@@ -14,8 +14,8 @@ WORKDIR /home/pan2influx
 # Install app dependencies
 COPY  package.json  /home/pan2influx/
 RUN npm install
-ENV IP="10.95.2.234"
-ENV KEY="LUFRPT0wOFBSTWxOdGIvazFxRkc2b2VpZnNnTUEyc1E9QnRPY0ZGNWhMd3Rya3l6VndyZnVhUT09 ="
+ENV IP="10.29.1.218"
+ENV KEY="LUFRPT0zMU1DQ3ZiOXZ3aEpneEtrY1l1cjlpV3dSR2s9a1VkVVZ0bjJMRXl6Q3N3SWRlQ3U2OFA5dDJJenNpdGRady91aVpGRWF0cz0="
 COPY *.js /home/pan2influx/
 #USER pan2influx
 CMD ["npm", "start"]
