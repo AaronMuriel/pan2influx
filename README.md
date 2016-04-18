@@ -6,5 +6,6 @@ IP address and key of PAN firewall are in Dockerfile
 
 Influxdb settings are in influx.js
 
+[Grafana](pan2influx.JPG)
 ##### Notes:
 tested on VM-1000-HV (PAN 7.0.1)
