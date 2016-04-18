@@ -8,4 +8,4 @@ Influxdb settings are in influx.js
 
 ![Grafana](pan2influx.JPG)
 ##### Notes:
-tested on VM-1000-HV (PAN 7.0.1)
+tested on VM-1000-HV (PAN 7.0.1) and 5060 9PAN 7.1)
