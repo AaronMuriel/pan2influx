@@ -15,7 +15,7 @@ WORKDIR /home/pan2influx
 COPY  package.json  /home/pan2influx/
 RUN npm install
 ENV IP="10.34.2.20"
-ENV KEY="LUFRPT1jRVRDTmo1VVpCZ2wwa3hCU1Roc1pWUVh0VTA9QU5jREpOWVFCaFBXbW5xZ214UU9zQT09"
+ENV KEY=""
 ENV FW="PAN1"
 ENV LOCATION="MR-DC1"
 COPY *.js /home/pan2influx/
