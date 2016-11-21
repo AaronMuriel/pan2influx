@@ -14,8 +14,9 @@ var request = require('request');
 var cheerio = require('cheerio');
 var _ = require('lodash');
 var influx = require('./influx');
-const FW = 'PAN';
+const FW = process.env.FW;
 const IP = process.env.IP;
+const LOCATION = process.env.LOCATION;
 const API = 'https://' + IP + '/esp/restapi.esp?type=op&cmd=';
 const CMD = '<show><running><resource-monitor><second></second></resource-monitor></running></show>';
 const KEY = process.env.KEY;
@@ -50,7 +51,7 @@ request.get(options, function (error, response, body) {
                 var max = getMaxOfArray(value);
                 coreid++;
                 console.log(date, max, FW, dp, coreid); // last min max
-                influx.writePoint('cpu', {time: date, value: max}, {site: 'DC', firewall: FW, dsp: dp, coreid: coreid},
+                influx.writePoint('cpu', {time: date, value: max}, {site: LOCATION, firewall: FW, dsp: dp, coreid: coreid},
                     function (err, response) {
                         if (err) console.log("Influxdb error");
                     })

@@ -10,3 +10,4 @@ IP address and key of PAN firewall are in Dockerfile.Influxdb settings are in in
 ##### Tested on:
 1. VM-1000-HV (PAN 7.0.1)
 2. 5060 (PAN 7.1)
+3. InfluxDB (0.9.6.1)
