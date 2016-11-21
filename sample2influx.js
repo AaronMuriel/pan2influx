@@ -6,6 +6,8 @@ const Influx = require('influx');
 const influx = new Influx.InfluxDB({
     host: '1.1.1.1',
     database: 'tmp',
+    username : 'dev',
+    password : 'dev123',
     schema: [
         {
             measurement: 'cpu',
