@@ -9,7 +9,7 @@ module.exports = new influx.InfluxDB({
     username : 'dev',
     password : 'dev123',
     database : 'tmp',
-    schema: [
+    schema: [ //v1.1.0
         {
             measurement: 'cpu',
             fields: {
