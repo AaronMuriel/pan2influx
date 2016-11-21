@@ -51,18 +51,18 @@ request.get(options, function (error, response, body) {
                 var max = getMaxOfArray(value);
                 coreid++;
                 console.log(date, max, FW, dp, coreid); // last min max
-                /*influx.writePoint('cpu', {time: date, value: max}, {site: LOCATION, firewall: FW, dsp: dp, coreid: coreid},
+                influx.writePoint('cpu', {time: date, value: max}, {site: LOCATION, firewall: FW, dsp: dp, coreid: coreid},
                     function (err, response) {
                         if (err) console.log("Influxdb error");
-                    })*/
-                influx.writePoints([  //v1.1.0
+                    })
+                /*influx.writePoints([  //v1.1.0
                     {
                         measurement: 'cpu',
                         tags: { site: LOCATION, firewall: FW, dsp: dp, coreid: coreid },
                         fields: { cpu: max },
                         timestamp: date
                     }
-                ])
+                ])*/
             });
         })
     } else console.log(error)

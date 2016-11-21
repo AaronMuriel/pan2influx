@@ -24,13 +24,13 @@ const influx = new Influx.InfluxDB({
 influx.writePoints([
     {
         measurement: 'cpu',
-        tags: { site: DC1, firewall: PAN2, dsp: 0, coreid: 1  },
+        tags: { site: 'DC1', firewall: 'PAN2', dsp: 0, coreid: 1  },
         fields: { cpu: 55 },
     }
 ]).then(() => {
     return influx.query(`
     select * from cpu
-    where firewall = ${PAN2}
+    where firewall = 'PAN2'
     order by time desc
     limit 10
   `)
