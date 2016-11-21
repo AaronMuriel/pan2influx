@@ -60,7 +60,7 @@ request.get(options, function (error, response, body) {
                         measurement: 'cpu',
                         tags: { site: LOCATION, firewall: FW, dsp: dp, coreid: coreid },
                         fields: { cpu: max },
-                        timestamp: date,
+                        timestamp: date
                     }
                 ])
             });
