@@ -55,6 +55,14 @@ request.get(options, function (error, response, body) {
                     function (err, response) {
                         if (err) console.log("Influxdb error");
                     })
+                /*influx.writePoints([  //v1.1.0
+                    {
+                        measurement: 'cpu',
+                        tags: { site: LOCATION, firewall: FW, dsp: dp, coreid: coreid },
+                        fields: { cpu: max },
+                        timestamp: date,
+                    }
+                ])*/
             });
         })
     } else console.log(error)
